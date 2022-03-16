@@ -1,90 +1,93 @@
+////
+////  Order.swift
+////  CupcakeCorner-100SUI-9
+////
+////  Created by Duncan Kent on 16/03/2022.
+////
 //
-//  Order.swift
-//  CupcakeCorner-100SUI-9
+//import SwiftUI
 //
-//  Created by Duncan Kent on 16/03/2022.
+//class Order: ObservableObject, Codable {
+//    
+//    enum CodingKeys: CodingKey {
+//        case type, quantity, extraFrosting, addSprinkles, name, streetAddress, city, zip
+//    }
+//    
+//    static let types = ["Vanilla", "Strawberry", "Chocolate", "Red Velvet"]
+//    
+//    // MARK: Product
+//    @Published var type = 0
+//    @Published var quantity = 3
+//    
+//    @Published var specialRequestEnabled = false {
+//        didSet {
+//            if !specialRequestEnabled {
+//                extraFrosting = false
+//                addSprinkles = false
+//            }
+//        }
+//    }
+//    @Published var extraFrosting = false
+//    @Published var addSprinkles = false
+//    
+//    // MARK: Customer
+//    @Published var name = ""
+//    @Published var streetAddress = ""
+//    @Published var city = ""
+//    @Published var zip = ""
+//    
+//    var hasValidAddress: Bool {
+//        !name.isEmpty && name.trimmingCharacters(in: .whitespacesAndNewlines).count != 0 &&
+//        !streetAddress.isEmpty && streetAddress.trimmingCharacters(in: .whitespacesAndNewlines).count != 0 &&
+//        !city.isEmpty && city.trimmingCharacters(in: .whitespacesAndNewlines).count != 0 &&
+//        !zip.isEmpty && zip.trimmingCharacters(in: .whitespacesAndNewlines).count != 0
+//    }
+//    
+//    // MARK: Pricing
+//    var cost: Double {
+//        var cost = Double(quantity) * 2
+//        
+//        cost += (Double(type) / 2)
+//        
+//        if extraFrosting {
+//            cost += Double(quantity)
+//        }
+//        
+//        if addSprinkles {
+//            cost += (Double(quantity) / 2)
+//        }
+//        
+//        return cost
+//    }
+//    
+//    func encode(to encoder: Encoder) throws {
+//        var container = encoder.container(keyedBy: CodingKeys.self)
+//        
+//        try container.encode(type, forKey: .type)
+//        try container.encode(quantity, forKey: .quantity)
+//        try container.encode(extraFrosting, forKey: .extraFrosting)
+//        try container.encode(addSprinkles, forKey: .addSprinkles)
+//        try container.encode(name, forKey: .name)
+//        try container.encode(streetAddress, forKey: .streetAddress)
+//        try container.encode(city, forKey: .city)
+//        try container.encode(zip, forKey: .zip)
+//    }
+//    
+//    required init(from decoder: Decoder) throws {
+//        let container = try decoder.container(keyedBy: CodingKeys.self)
+//        
+//        type = try container.decode(Int.self, forKey: .type)
+//        quantity = try container.decode(Int.self, forKey: .quantity)
+//        
+//        extraFrosting = try container.decode(Bool.self, forKey: .extraFrosting)
+//        addSprinkles = try container.decode(Bool.self, forKey: .addSprinkles)
+//        
+//        name = try container.decode(String.self, forKey: .name)
+//        streetAddress = try container.decode(String.self, forKey: .streetAddress)
+//        city = try container.decode(String.self, forKey: .city)
+//        zip = try container.decode(String.self, forKey: .zip)
+//    }
 //
-
-import SwiftUI
-
-class Order: ObservableObject, Codable {
-    
-    enum CodingKeys: CodingKey {
-        case type, quantity, extraFrosting, addSprinkles, name, streetAddress, city, zip
-    }
-    
-    static let types = ["Vanilla", "Strawberry", "Chocolate", "Red Velvet"]
-    
-    // MARK: Product
-    @Published var type = 0
-    @Published var quantity = 3
-    
-    @Published var specialRequestEnabled = false {
-        didSet {
-            if !specialRequestEnabled {
-                extraFrosting = false
-                addSprinkles = false
-            }
-        }
-    }
-    @Published var extraFrosting = false
-    @Published var addSprinkles = false
-    
-    // MARK: Customer
-    @Published var name = ""
-    @Published var streetAddress = ""
-    @Published var city = ""
-    @Published var zip = ""
-    
-    var hasValidAddress: Bool {
-        !name.isEmpty && !streetAddress.isEmpty && !city.isEmpty && !zip.isEmpty
-    }
-    
-    // MARK: Pricing
-    var cost: Double {
-        var cost = Double(quantity) * 2
-        
-        cost += (Double(type) / 2)
-        
-        if extraFrosting {
-            cost += Double(quantity)
-        }
-        
-        if addSprinkles {
-            cost += (Double(quantity) / 2)
-        }
-        
-        return cost
-    }
-    
-    func encode(to encoder: Encoder) throws {
-        var container = encoder.container(keyedBy: CodingKeys.self)
-        
-        try container.encode(type, forKey: .type)
-        try container.encode(quantity, forKey: .quantity)
-        try container.encode(extraFrosting, forKey: .extraFrosting)
-        try container.encode(addSprinkles, forKey: .addSprinkles)
-        try container.encode(name, forKey: .name)
-        try container.encode(streetAddress, forKey: .streetAddress)
-        try container.encode(city, forKey: .city)
-        try container.encode(zip, forKey: .zip)
-    }
-    
-    required init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: CodingKeys.self)
-        
-        type = try container.decode(Int.self, forKey: .type)
-        quantity = try container.decode(Int.self, forKey: .quantity)
-        
-        extraFrosting = try container.decode(Bool.self, forKey: .extraFrosting)
-        addSprinkles = try container.decode(Bool.self, forKey: .addSprinkles)
-        
-        name = try container.decode(String.self, forKey: .name)
-        streetAddress = try container.decode(String.self, forKey: .streetAddress)
-        city = try container.decode(String.self, forKey: .city)
-        zip = try container.decode(String.self, forKey: .zip)
-    }
-
-    init() {}
-    
-}
+//    init() {}
+//    
+//}
